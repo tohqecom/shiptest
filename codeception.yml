@@ -1,0 +1,27 @@
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+modules:
+    enabled:
+        - ScubismDb
+    config:
+        ScubismDb:
+            dsn: 'mysql:host=localhost;dbname=ecorange_test' #Ec server mysql connection pdo string
+            user: 'root'
+            password: 'root'
+            dump: dump.sql #populate data - reset each of time we run test.
+            populate: true #whether the the dump should be loaded before the test suite is started
+            cleanup: false  #whether the dump should be reloaded before each test
+            reconnect: true #whether the module should reconnect to the database before each test
+
